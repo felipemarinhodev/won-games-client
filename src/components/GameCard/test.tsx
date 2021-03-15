@@ -26,15 +26,34 @@ describe('<GameCard />', () => {
   })
 
   it('Should render price is label', () => {
-    // renderizar o componente
-    // preço não tenha line-through
-    // preço tenha o background secundário
+    renderWithTheme(<GameCard {...props} />)
+    expect(screen.getByText(props.price)).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
+    expect(screen.getByText(props.price)).toHaveStyle({
+      backgroundColor: '#3CD3C1'
+    })
   })
 
   it('Should render a line-through in price when promotional', () => {
-    // renderizar o componente (COM promotionalPrice) | 200 reais | 15 reais
-    // preço tenha line-through (200)
-    // preço novo promocional não vai ter line-through (15)
-    // preço tenha o background secundário
+    const propsWithPromotional = {
+      ...props,
+      price: 'R$ 200,00',
+      promotionalPrice: 'R$ 15,00'
+    }
+    const screen = renderWithTheme(<GameCard {...propsWithPromotional} />)
+    expect(screen.getByText(propsWithPromotional.price)).toHaveStyle({
+      textDecoration: 'line-through'
+    })
+    expect(
+      screen.getByText(propsWithPromotional.promotionalPrice)
+    ).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
+    expect(screen.getByText(propsWithPromotional.promotionalPrice)).toHaveStyle(
+      {
+        backgroundColor: '#3CD3C1'
+      }
+    )
   })
 })
