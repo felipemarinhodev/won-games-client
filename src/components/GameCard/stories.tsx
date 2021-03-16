@@ -12,6 +12,9 @@ export default {
     // promotionalPrice: 'R$ 200,00'
     price: 'R$ 200,00',
     promotionalPrice: 'R$ 15,00'
+  },
+  argTypes: {
+    onFav: { action: 'clicked' }
   }
 } as Meta
 
