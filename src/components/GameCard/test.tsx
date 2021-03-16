@@ -69,4 +69,22 @@ describe('<GameCard />', () => {
 
     expect(onFav).toBeCalled()
   })
+
+  it('Should render a ribbon', () => {
+    renderWithTheme(
+      <GameCard
+        {...props}
+        ribbon="20%"
+        ribbonColor="secondary"
+        ribbonSize="small"
+      />
+    )
+    const ribbon = screen.getByText(/20%/)
+    expect(ribbon).toBeInTheDocument()
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' })
+    expect(ribbon).toHaveStyle({
+      height: '2.6rem',
+      fontSize: '1.2rem'
+    })
+  })
 })
