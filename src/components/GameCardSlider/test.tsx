@@ -72,7 +72,11 @@ describe('<GameCardSlider />', () => {
     )
     expect(container.querySelectorAll('.slick-active')).toHaveLength(4)
 
-    expect(screen.getByLabelText(/next games/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/previous games/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/next games/i)).toHaveStyle({
+      color: '#FAFAFA'
+    })
+    expect(screen.getByLabelText(/previous games/i)).toHaveStyle({
+      color: '#FAFAFA'
+    })
   })
 })
