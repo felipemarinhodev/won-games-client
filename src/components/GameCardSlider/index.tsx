@@ -5,7 +5,7 @@ import GameCard, { GameCardProps } from 'components/GameCard'
 import Slider, { SliderSettings } from 'components/Slider'
 import * as S from './styles'
 
-type GameCardSliderProps = {
+export type GameCardSliderProps = {
   items: GameCardProps[]
   color?: 'white' | 'black'
 }
@@ -47,7 +47,7 @@ const settings: SliderSettings = {
     }
   ]
 }
-const GameCardSlider = ({ items, color = 'black' }: GameCardSliderProps) => (
+const GameCardSlider = ({ items, color = 'white' }: GameCardSliderProps) => (
   <S.Wrapper color={color}>
     <Slider settings={settings}>
       {items.map((item, index) => (
