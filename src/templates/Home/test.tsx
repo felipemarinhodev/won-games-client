@@ -9,14 +9,14 @@ import highlightMock from 'components/Highlight/mock'
 
 const props = {
   banners: bannersMock,
-  newGames: gamesMock,
+  newGames: [gamesMock[0]],
   mostPopularHighlight: highlightMock,
-  mostPopularGames: gamesMock,
+  mostPopularGames: [gamesMock[0]],
   upcommingHighlight: highlightMock,
-  upcommingGames: gamesMock,
-  upcommingMoreGames: gamesMock,
+  upcommingGames: [gamesMock[0]],
+  upcommingMoreGames: [gamesMock[0]],
   freeHighlight: highlightMock,
-  freeGames: gamesMock
+  freeGames: [gamesMock[0]]
 }
 
 describe('<Home />', () => {
@@ -27,9 +27,8 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /contact/i })
     ).toBeInTheDocument()
-  })
-  it('should render the sections', () => {
-    renderWithTheme(<Home {...props} />)
+
+    // 'should render the sections'
 
     expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
     expect(
@@ -41,14 +40,12 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /free games/i })
     ).toBeInTheDocument()
-  })
 
-  it('Should render section elements', () => {
-    renderWithTheme(<Home {...props} />)
+    // 'Should render section elements'
     // banner
     expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1)
-    //card game ( 5 sections com 4 cadrs cada = 5x4 = 20)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(20)
+    //card game ( 5 sections com 1 cadrs cada = 5x1 = 5)
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
     // highlight
     expect(screen.getAllByText(/red dead it`s back/i)).toHaveLength(3)
   })
