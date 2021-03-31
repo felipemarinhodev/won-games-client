@@ -23,7 +23,6 @@
     "src/**/*": [
       "yarn run eslint --fix",
       "yarn run lint",
-      "yarn typecheck",
       "yarn test --findRelatedTests --bail"
     ]
   },
