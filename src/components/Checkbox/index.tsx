@@ -3,15 +3,24 @@ import * as S from './styles'
 export type CheckboxProps = {
   label?: string
   labelFor?: string
+  labelColor?: 'white' | 'black'
 }
 
-const Checkbox = ({ label, labelFor = '' }: CheckboxProps) => (
+const Checkbox = ({
+  label,
+  labelFor = '',
+  labelColor = 'white'
+}: CheckboxProps) => (
   <S.Wrapper>
     <input type="checkbox" id={labelFor} />
     {!!label && (
-      <label htmlFor={labelFor} data-testid="label-checkbox">
+      <S.Label
+        htmlFor={labelFor}
+        labelColor={labelColor}
+        data-testid="label-checkbox"
+      >
         {label}
-      </label>
+      </S.Label>
     )}
   </S.Wrapper>
 )
