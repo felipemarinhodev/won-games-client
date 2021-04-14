@@ -6,9 +6,41 @@ export default {
   component: Checkbox,
   argTypes: {
     onCheck: { action: 'checked' }
+  },
+  parameters: {
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'won-dark'
+    }
   }
 } as Meta
 
 export const Default: Story<CheckboxProps> = (args) => (
-  <Checkbox {...args} isChecked />
+  <>
+    <div style={{ padding: 10 }}>
+      <Checkbox
+        {...args}
+        isChecked
+        label="Action"
+        labelFor="action"
+        name="category"
+      />
+    </div>
+    <div style={{ padding: 10 }}>
+      <Checkbox
+        {...args}
+        label="Adventure"
+        labelFor="adventure"
+        name="category"
+      />
+    </div>
+    <div style={{ padding: 10 }}>
+      <Checkbox
+        {...args}
+        label="Strategy"
+        labelFor="strategy"
+        name="category"
+      />
+    </div>
+  </>
 )
