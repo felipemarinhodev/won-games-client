@@ -1,11 +1,16 @@
 import styled, { css } from 'styled-components'
+import { TextFieldProps } from '.'
 
-export const InputWrapper = styled.div`
-  ${({ theme }) => css`
+type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
+
+export const InputWrapper = styled.div<IconPositionProps>`
+  ${({ theme, iconPosition }) => css`
     display: flex;
+    flex-direction: ${iconPosition === 'right' ? 'row-reverse' : 'row'};
     background: ${theme.colors.lightGray};
     border-radius: 0.2rem;
-    padding: 0 ${theme.spacings.xsmall};
+    padding: ${theme.spacings.xxsmall} 0;
+    padding-${iconPosition}: ${theme.spacings.xsmall};
     border: 0.2rem solid;
     border-color: ${theme.colors.primary};
 
@@ -20,7 +25,7 @@ export const Input = styled.input`
     color: ${theme.colors.black};
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.medium};
-    padding: ${theme.spacings.xxsmall} 0;
+    padding: ${theme.spacings.xxsmall};
     background: transparent;
     border: 0;
     outline: none;
@@ -33,6 +38,17 @@ export const Label = styled.label`
     font-size: ${theme.font.sizes.small};
     color: ${theme.colors.black};
     cursor: pointer;
+  `}
+`
+export const Icon = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 2.2rem;
+    color: ${theme.colors.gray};
+
+    & > svg {
+      width: 100%;
+    }
   `}
 `
 
