@@ -70,4 +70,28 @@ describe('<TextField />', () => {
       screen.getByTestId('icon').parentElement?.parentElement
     ).toHaveStyleRule('flex-direction', 'row-reverse')
   })
+
+  it('Does not changes its value when disabled', async () => {
+    const onInput = jest.fn()
+    renderWithTheme(
+      <TextField
+        onInput={onInput}
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        disabled
+      />
+    )
+
+    const input = screen.getByRole('textbox')
+    expect(input).toBeDisabled()
+
+    const text = 'This is my new text'
+    userEvent.type(input, text)
+
+    await waitFor(() => {
+      expect(input).not.toHaveValue(text)
+    })
+    expect(onInput).not.toHaveBeenCalled()
+  })
 })
