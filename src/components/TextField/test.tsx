@@ -1,6 +1,7 @@
 import { Email } from '@styled-icons/material-outlined'
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import theme from 'styles/theme'
 import { renderWithTheme } from 'utils/tests/helpers'
 import TextField from '.'
 
@@ -93,5 +94,37 @@ describe('<TextField />', () => {
       expect(input).not.toHaveValue(text)
     })
     expect(onInput).not.toHaveBeenCalled()
+  })
+
+  it('should render error style when hasError is thufy', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        error="Preenchimento obrigatório"
+      />
+    )
+    const textField = screen.getByText(/textfield/i)
+
+    expect(screen.getByText(/preenchimento obrigatório/i)).toBeInTheDocument()
+    expect(textField).toHaveStyle({ color: theme.colors.red })
+    expect(textField).toHaveStyle({ borderColor: theme.colors.red })
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should not render error message when hasError is falsy', () => {
+    renderWithTheme(
+      <TextField
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        error="Preenchimento obrigatório"
+      />
+    )
+
+    expect(
+      screen.queryByLabelText(/preenchimento obrigatório/i)
+    ).not.toBeInTheDocument()
   })
 })
