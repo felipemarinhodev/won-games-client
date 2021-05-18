@@ -3,6 +3,10 @@ import { TextFieldProps } from '.'
 
 type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
 
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & {
+  error?: boolean
+}
+
 export const InputWrapper = styled.div<IconPositionProps>`
   ${({ theme, iconPosition }) => css`
     display: flex;
@@ -67,8 +71,27 @@ const wrapperModifiers = {
   `
 }
 
-export const Wrapper = styled.div<Pick<TextFieldProps, 'disabled'>>`
-  ${({ theme, disabled }) => css`
+const wrapperErrorsModifiers = {
+  hasError: (theme: DefaultTheme) => css`
+    ${Label},
+    ${InputWrapper},
+    ${Icon},
+    ${Error} {
+      color: ${theme.colors.red};
+      border-color: ${theme.colors.red};
+
+      &:focus-within {
+        box-shadow: 0 0 0.5rem ${theme.colors.red};
+      }
+    }
+  `
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, disabled, error }) => css`
     ${disabled && wrapperModifiers.disabled(theme)}
+    ${error && wrapperErrorsModifiers.hasError(theme)}
   `}
 `
+
+export const Error = styled.span``
