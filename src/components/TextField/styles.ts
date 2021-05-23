@@ -13,7 +13,7 @@ export const InputWrapper = styled.div<IconPositionProps>`
     flex-direction: ${iconPosition === 'right' ? 'row-reverse' : 'row'};
     background: ${theme.colors.lightGray};
     border-radius: 0.2rem;
-    padding: ${theme.spacings.xxsmall} 0;
+    padding: 0 ${theme.spacings.xxsmall};
     padding-${iconPosition}: ${theme.spacings.xsmall};
     border: 0.2rem solid;
     border-color: ${theme.colors.lightGray};
