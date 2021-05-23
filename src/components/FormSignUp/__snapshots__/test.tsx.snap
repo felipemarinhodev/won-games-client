@@ -17,7 +17,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
   flex-direction: row;
   background: #EAEAEA;
   border-radius: 0.2rem;
-  padding: 0.8rem 0;
+  padding: 0 0.8rem;
   padding-left: 1.6rem;
   border: 0.2rem solid;
   border-color: #EAEAEA;
