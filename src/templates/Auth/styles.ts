@@ -49,6 +49,10 @@ export const BannerContent = styled.div`
     z-index: ${theme.layers.base};
     padding: ${theme.spacings.xxlarge} ${theme.spacings.xxlarge}
       ${theme.spacings.large};
+    a {
+      width: fit-content;
+      height: fit-content;
+    }
   `}
 `
 
