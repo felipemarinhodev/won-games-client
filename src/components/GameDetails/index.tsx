@@ -6,13 +6,19 @@ import * as S from './styles'
 type Platform = 'windows' | 'linux' | 'mac'
 
 export type GameDetailProps = {
+  developer: string
   platforms: Platform[]
+  releaseDate: string
 }
 
-const GameDetails = ({ platforms }: GameDetailProps) => {
+const GameDetails = ({
+  platforms,
+  developer,
+  releaseDate
+}: GameDetailProps) => {
   const platformIcons = {
     linux: <Linux title="linux" size={18} />,
-    mac: <Apple title="apple" size={18} />,
+    mac: <Apple title="mac" size={18} />,
     windows: <Windows title="windows" size={18} />
   }
 
@@ -26,12 +32,18 @@ const GameDetails = ({ platforms }: GameDetailProps) => {
       <S.Content>
         <S.Block>
           <S.Label>Developers</S.Label>
-          <S.Description>Gear Software</S.Description>
+          <S.Description>{developer}</S.Description>
         </S.Block>
 
         <S.Block>
           <S.Label>Release Date</S.Label>
-          <S.Description>Nov 16, 2019</S.Description>
+          <S.Description>
+            {new Intl.DateTimeFormat('en-US', {
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric'
+            }).format(new Date(releaseDate))}
+          </S.Description>
         </S.Block>
 
         <S.Block>
