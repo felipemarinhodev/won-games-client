@@ -10,7 +10,9 @@ export default {
     }
   },
   args: {
-    platforms: ['windows', 'linux', 'mac']
+    platforms: ['windows', 'linux', 'mac'],
+    developer: 'Different Tales',
+    releaseDate: '2020-11-21T23:00:00'
   },
   argTypes: {
     platforms: {
