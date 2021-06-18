@@ -6,10 +6,10 @@ import * as S from './styles'
 type Platform = 'windows' | 'linux' | 'mac'
 
 export type GameDetailProps = {
-  plataforms: Platform[]
+  platforms: Platform[]
 }
 
-const GameDetails = ({ plataforms }: GameDetailProps) => {
+const GameDetails = ({ platforms }: GameDetailProps) => {
   const platformIcons = {
     linux: <Linux title="linux" size={18} />,
     mac: <Apple title="apple" size={18} />,
@@ -37,7 +37,7 @@ const GameDetails = ({ plataforms }: GameDetailProps) => {
         <S.Block>
           <S.Label>Platforms</S.Label>
           <S.IconsWrapper>
-            {plataforms.map((icon: Platform) => (
+            {platforms.map((icon: Platform) => (
               <S.Icon key={icon}>{platformIcons[icon]}</S.Icon>
             ))}
           </S.IconsWrapper>
