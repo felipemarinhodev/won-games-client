@@ -5,16 +5,24 @@ import * as S from './styles'
 
 type Platform = 'windows' | 'linux' | 'mac'
 
+type Rating = 'BR0' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
+
 export type GameDetailProps = {
   developer: string
   platforms: Platform[]
   releaseDate: string
+  rating: Rating
+  genres: string[]
+  publisher: string
 }
 
 const GameDetails = ({
   platforms,
   developer,
-  releaseDate
+  releaseDate,
+  rating,
+  genres,
+  publisher
 }: GameDetailProps) => {
   const platformIcons = {
     linux: <Linux title="linux" size={18} />,
@@ -57,17 +65,19 @@ const GameDetails = ({
 
         <S.Block>
           <S.Label>Publisher</S.Label>
-          <S.Description>2K</S.Description>
+          <S.Description>{publisher}</S.Description>
         </S.Block>
 
         <S.Block>
           <S.Label>Rating</S.Label>
-          <S.Description>18+</S.Description>
+          <S.Description>
+            {rating === 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
+          </S.Description>
         </S.Block>
 
         <S.Block>
           <S.Label>Genres</S.Label>
-          <S.Description>Action / Adventure</S.Description>
+          <S.Description>{genres.join(' / ')}</S.Description>
         </S.Block>
       </S.Content>
     </S.Wrapper>
