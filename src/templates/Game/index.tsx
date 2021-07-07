@@ -1,9 +1,13 @@
 import Base from 'templates/Base'
-// import * as S from './styles'
+import * as S from './styles'
 
 const Game = () => (
   <Base>
-    <h1>Game</h1>
+    <S.Cover
+      src="https://www.denofgeek.com/wp-content/uploads/2020/07/ghost-of-tsushima-ps5-1.jpg"
+      role="image"
+      aria-label="cover"
+    />
   </Base>
 )
 
