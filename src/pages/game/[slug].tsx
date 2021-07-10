@@ -1,6 +1,6 @@
 import Game, { GameTemplateProps } from 'templates/Game'
 
-import galleryMock from '../../components/Gallery/mock'
+import galleryMock from 'components/Gallery/mock'
 
 export default function Index(props: GameTemplateProps) {
   return <Game {...props} />
