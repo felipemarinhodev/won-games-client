@@ -47,8 +47,8 @@ export async function getStaticProps() {
       gallery: galleryMock,
       description: descriptionHTML,
       details: detailMock,
-      upcommingGames: gamesMock,
-      upcommingHighlight: highlightsMock,
+      upcomingGames: gamesMock,
+      upcomingHighlight: highlightsMock,
       recommendGames: gamesMock
     }
   }
