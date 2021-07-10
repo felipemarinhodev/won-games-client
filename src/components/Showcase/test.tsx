@@ -8,7 +8,7 @@ import highlightMock from 'components/Highlight/mock'
 
 const props = {
   title: 'Most Popular',
-  highlightProps: highlightMock,
+  highlight: highlightMock,
   games: gamesMock.slice(0, 1)
 }
 
@@ -34,7 +34,7 @@ describe('<Showcase />', () => {
 
   it('should render without title', () => {
     renderWithTheme(
-      <Showcase games={props.games} highlightProps={props.highlightProps} />
+      <Showcase games={props.games} highlight={props.highlight} />
     )
 
     screen.getByRole('heading', { name: highlightMock.title })
@@ -58,7 +58,7 @@ describe('<Showcase />', () => {
 
   it('should render without games', () => {
     renderWithTheme(
-      <Showcase title={props.title} highlightProps={props.highlightProps} />
+      <Showcase title={props.title} highlight={props.highlight} />
     )
 
     screen.getByRole('heading', { name: /most popular/i })
