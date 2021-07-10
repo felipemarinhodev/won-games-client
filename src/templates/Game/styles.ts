@@ -1,6 +1,7 @@
-import { Container } from 'components/Container'
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
+
+import { Container } from 'components/Container'
 
 export const Main = styled.main`
   margin-top: 20rem;
@@ -42,3 +43,10 @@ const Section = styled(Container).attrs({ as: 'section' })`
 `
 
 export const SectionGameInfo = styled(Section)``
+export const SectionGallery = styled(Section)`
+  display: none;
+
+  ${media.greaterThan('medium')`
+    display: block;
+  `}
+`
