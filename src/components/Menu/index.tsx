@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-fill'
 import {
   Close as CloseIcon,
@@ -6,11 +7,11 @@ import {
 } from '@styled-icons/material-outlined'
 import { Search as SearchIcon } from '@styled-icons/material-outlined'
 
-import * as S from './styles'
 import Logo from 'components/Logo'
 import Button from 'components/Button'
 import MediaMatch from 'components/MediaMatch'
-import Link from 'next/link'
+
+import * as S from './styles'
 
 export type MenuProps = {
   username?: string
@@ -27,12 +28,18 @@ const Menu = ({ username }: MenuProps) => {
       </MediaMatch>
 
       <S.LogoWrapper>
-        <Logo hideOnMobile aria-label="Logo Won games" />
+        <Link href="/" passHref>
+          <a>
+            <Logo hideOnMobile aria-label="Logo Won games" />
+          </a>
+        </Link>
       </S.LogoWrapper>
 
       <MediaMatch greaterThan="medium">
         <S.MenuNav>
-          <S.MenuLink href="#">Home</S.MenuLink>
+          <Link href="/" passHref>
+            <S.MenuLink href="#">Home</S.MenuLink>
+          </Link>
           <S.MenuLink href="#">Explore</S.MenuLink>
         </S.MenuNav>
       </MediaMatch>
@@ -56,7 +63,9 @@ const Menu = ({ username }: MenuProps) => {
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
         <CloseIcon aria-label="Close menu" onClick={() => setIsOpen(false)} />
         <S.MenuNav>
-          <S.MenuLink href="#">Home</S.MenuLink>
+          <Link href="/" passHref>
+            <S.MenuLink>Home</S.MenuLink>
+          </Link>
           <S.MenuLink href="#">Explore</S.MenuLink>
           {!!username && (
             <>
