@@ -1,12 +1,14 @@
 import Base from 'templates/Base'
+import Showcase from 'components/Showcase'
 import TextContent from 'components/TextContent'
 import GameInfo, { GameInfoProps } from 'components/GameInfo'
 import Gallery, { GalleryImageProps } from 'components/Gallery'
 import GameDetails, { GameDetailProps } from 'components/GameDetails'
+import { Divider } from 'components/Divider'
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
+
 import * as S from './styles'
-import Showcase from 'components/Showcase'
 
 export type GameTemplateProps = {
   cover: string
@@ -46,6 +48,7 @@ const Game = ({
 
       <S.SectionGameDetails>
         <GameDetails {...details} />
+        <Divider />
       </S.SectionGameDetails>
 
       <Showcase
