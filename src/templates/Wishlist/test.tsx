@@ -1,9 +1,31 @@
-import { render } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import gamesMock from 'components/GameCardSlider/mock'
+import highlightsMock from 'components/Highlight/mock'
+import 'match-media-mock'
+import React from 'react'
+import { renderWithTheme } from 'utils/tests/helpers'
+import Wishlist from '.'
 
-// import Wishlist from '.'
+jest.mock('components/Showcase', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Showcase"></div>
+    }
+  }
+})
 
 describe('<Wishlist />', () => {
-  it('should render the heading', () => {
-    render(<></>)
+  it('should render Wishlist correctly', () => {
+    renderWithTheme(
+      <Wishlist
+        recommendedGames={gamesMock}
+        recommendedHighlight={highlightsMock}
+      />
+    )
+    expect(screen.getByRole('heading', { name: /wishlist/i })).toHaveStyle({
+      'border-left': '0.7rem solid #3CD3C1'
+    })
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(1)
   })
 })
