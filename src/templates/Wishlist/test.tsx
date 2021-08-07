@@ -6,6 +6,12 @@ import React from 'react'
 import { renderWithTheme } from 'utils/tests/helpers'
 import Wishlist from '.'
 
+const props = {
+  games: gamesMock,
+  recommendedGames: gamesMock,
+  recommendedHighlight: highlightsMock
+}
+
 jest.mock('components/Showcase', () => {
   return {
     __esModule: true,
@@ -17,15 +23,11 @@ jest.mock('components/Showcase', () => {
 
 describe('<Wishlist />', () => {
   it('should render Wishlist correctly', () => {
-    renderWithTheme(
-      <Wishlist
-        recommendedGames={gamesMock}
-        recommendedHighlight={highlightsMock}
-      />
-    )
+    renderWithTheme(<Wishlist {...props} />)
     expect(screen.getByRole('heading', { name: /wishlist/i })).toHaveStyle({
       'border-left': '0.7rem solid #3CD3C1'
     })
     expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(1)
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(8)
   })
 })
