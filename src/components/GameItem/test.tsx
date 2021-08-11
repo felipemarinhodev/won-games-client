@@ -14,12 +14,10 @@ describe('<GameItem />', () => {
     renderWithTheme(<GameItem {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: /red dead redemption 2/i })
+      screen.getByRole('heading', { name: props.title })
     ).toBeInTheDocument()
-    expect(
-      screen.getByRole('img', { name: /red dead redemption 2/i })
-    ).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: props.title })).toBeInTheDocument()
 
-    expect(screen.getByText(/R\$ 235,00/i)).toBeInTheDocument()
+    expect(screen.getByText(props.price)).toBeInTheDocument()
   })
 })
