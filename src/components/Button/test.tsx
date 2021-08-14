@@ -1,8 +1,7 @@
-import { screen } from '@testing-library/react'
 import { AddShoppingCart } from '@styled-icons/material-outlined'
-import { renderWithTheme } from './../../utils/tests/helpers'
-
+import { screen } from '@testing-library/react'
 import Button from '.'
+import { renderWithTheme } from './../../utils/tests/helpers'
 
 describe('<Button />', () => {
   it('should render the medium size by default', () => {
@@ -80,6 +79,18 @@ describe('<Button />', () => {
     expect(screen.getByRole('link', { name: /buy now/i })).toHaveAttribute(
       'href',
       '/link'
+    )
+  })
+
+  it('should render a disabled button', () => {
+    renderWithTheme(<Button disabled>Buy now</Button>)
+
+    expect(screen.getByRole('button', { name: /Buy now/i })).toHaveStyleRule(
+      'cursor',
+      'not-allowed',
+      {
+        modifier: ':disabled'
+      }
     )
   })
 })
