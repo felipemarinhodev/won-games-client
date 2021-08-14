@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Add, ShoppingCart } from '@styled-icons/material-outlined'
 import Radio from 'components/Radio'
 import Button from 'components/Button'
@@ -17,6 +18,7 @@ export type PaymentCard = {
 }
 
 const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
+  const [checked, setChecked] = useState(false)
   return (
     <S.Wrapper>
       <S.Body>
@@ -34,7 +36,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
                 name="credit-card"
                 id={card.number}
                 value={card.number}
-                onCheck={() => ({})}
+                onCheck={() => setChecked(true)}
               />
             </S.CardItem>
           ))}
@@ -48,7 +50,12 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         <Button as="a" fullWidth minimal>
           Continue shopping
         </Button>
-        <Button fullWidth icon={<ShoppingCart />} onClick={handlePayment}>
+        <Button
+          fullWidth
+          icon={<ShoppingCart />}
+          onClick={handlePayment}
+          disabled={!checked}
+        >
           Buy Now
         </Button>
       </S.Footer>

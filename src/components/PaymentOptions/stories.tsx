@@ -13,11 +13,19 @@ export default {
     backgrounds: {
       default: 'won-dark'
     }
+  },
+  argTypes: {
+    cards: {
+      type: ''
+    },
+    handlePayment: {
+      action: 'click'
+    }
   }
 } as Meta
 
 export const Default: Story<PaymentOptionsProps> = (args) => (
-  <div style={{ width: 500, margin: 'auto' }}>
+  <div style={{ maxWidth: 400, padding: 16 }}>
     <PaymentOptions {...args} />
   </div>
 )
