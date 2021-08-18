@@ -7,7 +7,7 @@ import TextField from '.'
 
 describe('<TextField />', () => {
   it('Renders with label', () => {
-    renderWithTheme(<TextField label="label" labelFor="Field" id="Field" />)
+    renderWithTheme(<TextField label="label" name="Label" />)
     expect(screen.getByLabelText('label')).toBeInTheDocument()
   })
 
@@ -24,12 +24,7 @@ describe('<TextField />', () => {
   it('Changes its value when typing', async () => {
     const onInput = jest.fn()
     renderWithTheme(
-      <TextField
-        onInput={onInput}
-        label="TextField"
-        labelFor="TextField"
-        id="TextField"
-      />
+      <TextField onInput={onInput} label="TextField" name="TextField" />
     )
 
     const input = screen.getByRole('textbox')
@@ -44,9 +39,7 @@ describe('<TextField />', () => {
   })
 
   it('Is accessible by tab', () => {
-    renderWithTheme(
-      <TextField label="TextField" labelFor="TextField" id="TextField" />
-    )
+    renderWithTheme(<TextField label="TextField" name="TextField" />)
     const input = screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
 
@@ -78,8 +71,7 @@ describe('<TextField />', () => {
       <TextField
         onInput={onInput}
         label="TextField"
-        labelFor="TextField"
-        id="TextField"
+        name="TextField"
         disabled
       />
     )
@@ -100,8 +92,7 @@ describe('<TextField />', () => {
     const { container } = renderWithTheme(
       <TextField
         label="TextField"
-        labelFor="TextField"
-        id="TextField"
+        name="TextField"
         error="Preenchimento obrigatório"
       />
     )
@@ -117,8 +108,7 @@ describe('<TextField />', () => {
     renderWithTheme(
       <TextField
         label="TextField"
-        labelFor="TextField"
-        id="TextField"
+        name="TextField"
         error="Preenchimento obrigatório"
       />
     )

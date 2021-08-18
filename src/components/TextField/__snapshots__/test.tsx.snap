@@ -68,6 +68,7 @@ exports[`<TextField /> should render error style when hasError is thufy 1`] = `
     <input
       class="c5"
       id="TextField"
+      name="TextField"
       type="text"
       value=""
     />
@@ -78,4 +79,4 @@ exports[`<TextField /> should render error style when hasError is thufy 1`] = `
     Preenchimento obrigatório
   </span>
 </div>
-`
+`;
