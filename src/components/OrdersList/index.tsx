@@ -1,8 +1,27 @@
+import Empty from 'components/Empty'
+import Heading from 'components/Heading'
+import GameItem, { GameItemProps } from 'components/GameItem'
 import * as S from './styles'
 
-const OrdersList = () => (
+export type OrdersListProps = {
+  items?: GameItemProps[]
+}
+
+const OrdersList = ({ items = [] }: OrdersListProps) => (
   <S.Wrapper>
-    <h1>OrdersList</h1>
+    <Heading lineBottom lineColor="primary" color="black" size="small">
+      My Orders
+    </Heading>
+
+    {items.length ? (
+      items?.map((item) => <GameItem key={item.downloadLink} {...item} />)
+    ) : (
+      <Empty
+        title="You have no orders yet"
+        description="Go back to the store and explore great games and offers"
+        hasLink
+      />
+    )}
   </S.Wrapper>
 )
 
