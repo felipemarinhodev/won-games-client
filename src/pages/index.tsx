@@ -25,8 +25,8 @@ export default function Index(props: HomeTemplateProps) {
 
 // https://nextjs.org/docs/basic-features/pages
 // getStaticProps(Recommended) => gerar estático em build time
-// getServerSideProps(Recommended) => gerar via ssr a cada request
-// getInitialProps => gerar vai ssr a cada request
+// getServerSideProps(Recommended) => gerar via ssr a cada request (nunca vai para o bundle do client)
+// getInitialProps => gerar vai ssr a cada request (vai para o client, no primeiro request faz no server side, após faz hydrate, no client side )
 export function getStaticProps() {
   // faz lógica
   // pode buscar dados numa API
