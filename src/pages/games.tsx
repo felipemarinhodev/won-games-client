@@ -1,16 +1,46 @@
 import GamesTemplate, { GamesTemplateProps } from 'templates/Games'
 
-import gamesItemMock from 'components/GameCardSlider/mock'
 import filterItemsMock from 'components/ExploreSidebar/mock'
+import { initializeApollo } from 'utils/apollo'
+import { gql } from '@apollo/client'
 
 export default function GamesPage(props: GamesTemplateProps) {
   return <GamesTemplate {...props} />
 }
 
-export function getServerSideProps() {
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
+
+  const { data } = await apolloClient.query({
+    query: gql`
+      query QueryGames {
+        games {
+          name
+          slug
+          cover {
+            url
+          }
+          developers {
+            name
+          }
+          price
+        }
+      }
+    `
+  })
+
   return {
     props: {
-      games: gamesItemMock,
+      revalidate: 60, // tempo que ele gera novamente a página, em segundo
+      games: data.games.map((game) => ({
+        title: game.name,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover.url}`,
+        price: new Intl.NumberFormat('en', {
+          style: 'currency',
+          currency: 'USD'
+        }).format(game.price)
+      })),
       filterItems: filterItemsMock
     }
   }
